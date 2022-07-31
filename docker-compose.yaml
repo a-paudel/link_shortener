@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build: .
+    environment:
+      - PORT=$PORT
+      - HOST=$HOST
+      - VIRTUAL_HOST=$HOST
+    # ports:
+    #   - "$PORT:$PORT"
+    expose:
+      - $PORT
+    command: python main.py
+    volumes:
+      - ./data:/app/data
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
