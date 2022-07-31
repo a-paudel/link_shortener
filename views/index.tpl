@@ -28,22 +28,27 @@
             </div>
         </form>
         <hr>
-        <template x-if="shortLink.length > 0">
-            <div>
-                <h2>The shortened link is:</h2>
-                <!-- centered code block -->
-                <a x-bind:href="shortLink" target="_blank">
-                    <code x-text="shortLink" style="text-align: center;">
-                    </code>
-                </a>
-            </div>
-        </template>
+        <div x-show="shortLink.length>0">
+            <h2>The shortened link is:</h2>
+            <!-- centered code block -->
+            <code x-text="shortLink" style="text-align: center;" x-on:click="openToast"></code>
+        </div>
+
+        <!-- toast -->
+        <article style="position: fixed; width: 15em; height: 9em; left: 50%; bottom: 1em; margin-left: -7.5em;"
+            data-theme="light" x-show="toastIsOpen" x-transition:enter.duration.500ms
+            x-transition:leave.duration.1000ms>
+            <h5 style="margin: 0;">
+                Copied to clipboard
+            </h5>
+        </article>
     </main>
 </body>
 <script>
     let data = {
         url: "",
         shortLink: "",
+        toastIsOpen: false,
         resetHandler() {
             this.url = "";
             this.shortLink = "";
@@ -65,11 +70,18 @@
                 this.shortLink = `${currentUrl.protocol}//${currentUrl.host}/${code}`
                 // this.shortLink = window.location.host + "/" + code;
                 console.log(this.shortLink);
-                navigator.clipboard.writeText(this.shortLink);
             } else {
                 alert("Error shortening link");
             }
 
+        },
+        openToast() {
+            // alert("Clicked")
+            navigator.clipboard.writeText(this.shortLink);
+            this.toastIsOpen = true;
+            setTimeout(() => {
+                this.toastIsOpen = false;
+            }, 2000);
         },
 
     }

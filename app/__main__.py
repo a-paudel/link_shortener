@@ -1,6 +1,8 @@
 from bottle import run, redirect, get, post, view, request
-from database import get_link, create_code
+from app.database import get_link, create_code
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 @get("/")
@@ -32,8 +34,8 @@ def create_code_for_url():
 
 
 run(
-    debug=True,
-    reloader=True,
-    host=os.getenv("HOST", "localhost"),
+    debug=os.getenv("DEBUG", False),
+    reloader=os.getenv("RELOADER", False),
+    host=os.getenv("HOST", "0.0.0.0"),
     port=os.getenv("PORT", 8080),
 )

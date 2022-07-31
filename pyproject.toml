@@ -1,17 +1,20 @@
-[tool.poetry]
-name = "link_shortner"
-version = "0.1.0"
+[project]
+name = ""
+version = ""
 description = ""
-authors = ["apaudel96 <apaudel96@ymail.com>"]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-bottle = "^0.12.21"
-
-[tool.poetry.dev-dependencies]
-black = "^22.6.0"
-pylama = "^8.3.8"
+authors = [
+    {name = "apaudel96", email = "apaudel96@ymail.com"},
+]
+dependencies = [
+    "bottle>=0.12.21",
+    "python-dotenv>=0.20.0",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool]
+[tool.pdm]

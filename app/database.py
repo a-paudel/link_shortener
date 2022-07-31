@@ -4,7 +4,8 @@ from secrets import token_urlsafe
 import time
 
 # create connection
-conn = sqlite3.connect("data/db.sqlite3")
+conn = sqlite3.connect("db.sqlite3")
+# conn = sqlite3.connect("data/db.sqlite3")
 
 # create table
 def create_db():
