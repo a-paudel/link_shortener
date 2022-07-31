@@ -15,7 +15,7 @@
 
 <body>
     <main class="container" x-data="data">
-        <h1>Link Shortner</h1>
+        <h1>Link Shortener</h1>
         <hr>
         <form action="" x-on:reset.prevent="resetHandler" x-on:submit.prevent="submitHandler">
             <label for="">
