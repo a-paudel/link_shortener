@@ -12,16 +12,12 @@ services:
     command: poetry run python main.py
     volumes:
       - ./data:/app/data
-    # networks:
-    #   - backend
     labels:
       - traefik.enable=true
       - traefik.http.routers.link_shortener.rule=Host("link.apaudel.com")
-      - traefik.http.routers.link_shortener.entrypoints=websecure
+      - traefik.http.routers.link_shortener.entrypoints=websecure,web
       - traefik.http.routers.link_shortener.tls.certresolver=myresolver
 
 networks:
   default:
     name: "backend"
-  # backend:
-  #   external: true
