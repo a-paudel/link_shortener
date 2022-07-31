@@ -5,7 +5,7 @@ services:
     build: .
     environment:
       - PORT=$PORT
-      - HOST="0.0.0.0"
+      - HOST=0.0.0.0
       - VIRTUAL_HOST=$HOST
     # ports:
     #   - "$PORT:$PORT"
