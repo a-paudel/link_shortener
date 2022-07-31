@@ -8,7 +8,7 @@ services:
       - HOST=0.0.0.0
     expose:
       - $PORT
-    command: "pdm run python -m main"
+    command: "pdm run python -m app"
     volumes:
       - ./data:/app/data
     labels:
