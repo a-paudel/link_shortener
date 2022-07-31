@@ -2,10 +2,13 @@ from re import U
 import sqlite3
 from secrets import token_urlsafe
 import time
+import os
 
 # create connection
-conn = sqlite3.connect("db.sqlite3")
-# conn = sqlite3.connect("data/db.sqlite3")
+if os.getenv("ENV", "PROD") == "DEV":
+    conn = sqlite3.connect("db.sqlite3")
+else:
+    conn = sqlite3.connect("data/db.sqlite3")
 
 # create table
 def create_db():
