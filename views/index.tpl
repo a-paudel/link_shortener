@@ -10,7 +10,7 @@
         integrity="sha512-2MD814AVKlRmLMNeIKnmSSJEaI1gFz742oiIWCkRDZ3ZoN8lALOPN71gCCya8WItuZNfrulKl5jnLOVIhtGY+A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//unpkg.com/alpinejs" defer></script>
-    <title>Link Shortener</title>
+    <title>Link Shortner</title>
 </head>
 
 <body>
