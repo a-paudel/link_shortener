@@ -6,10 +6,9 @@ services:
     environment:
       - PORT=$PORT
       - HOST=0.0.0.0
-      - VIRTUAL_HOST=$HOST
     expose:
       - $PORT
-    command: poetry run python main.py
+    command: [ "/app/venv/bin/python", "main.py" ]
     volumes:
       - ./data:/app/data
     labels:
