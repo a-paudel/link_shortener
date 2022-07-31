@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    restart: always
     build: .
     environment:
       - PORT=$PORT
@@ -10,9 +11,10 @@ services:
     #   - "$PORT:$PORT"
     expose:
       - $PORT
-    command: python main.py
+    command: poetry run python main.py
     volumes:
       - ./data:/app/data
+
     networks:
       - backend
 
