@@ -8,6 +8,8 @@ authors = [
 dependencies = [
     "bottle>=0.12.21",
     "python-dotenv>=0.20.0",
+    "peewee>=3.15.1",
+    "psycopg2-binary>=2.9.3",
 ]
 requires-python = ">=3.10"
 license = {text = "MIT"}

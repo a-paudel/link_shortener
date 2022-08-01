@@ -1,8 +1,8 @@
+from dotenv import load_dotenv
+load_dotenv()
 from bottle import run, redirect, get, post, view, request
 from app.database import get_link, create_code
 import os
-from dotenv import load_dotenv
-load_dotenv()
 
 
 @get("/")
