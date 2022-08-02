@@ -3,14 +3,10 @@ services:
   web:
     restart: always
     build: .
-    # environment:
-    #   - PORT=$PORT
-    #   - HOST=0.0.0.0
     env_file:
       - .env
     expose:
       - $PORT
-    # command: "pdm run python -m app"
     volumes:
       - ./data:/app/data
     labels:
