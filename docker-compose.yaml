@@ -3,20 +3,23 @@ services:
   web:
     restart: always
     build: .
-    environment:
-      - PORT=$PORT
-      - HOST=0.0.0.0
+    # environment:
+    #   - PORT=$PORT
+    #   - HOST=0.0.0.0
+    env_file:
+      - .env
     expose:
       - $PORT
-    command: "pdm run python -m app"
+    # command: "pdm run python -m app"
     volumes:
       - ./data:/app/data
     labels:
-      - traefik.enable=true
       - traefik.http.routers.link_shortener.rule=Host("link.apaudel.com")
       - traefik.http.routers.link_shortener.entrypoints=websecure,web
-      - traefik.http.routers.link_shortener.tls.certresolver=myresolver
+      - traefik.http.routers.link_shortener.tls.certresolver=certbot
+    networks:
+      - backend
 
 networks:
-  default:
-    name: "backend"
+  backend:
+    driver: bridge
