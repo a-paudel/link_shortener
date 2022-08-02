@@ -13,7 +13,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.link_shortener.rule=Host("link.apaudel.com")
       - traefik.http.routers.link_shortener.entrypoints=websecure,web
-      - traefik.http.routers.link_shortener.tls.certresolver=myresolver
+      - traefik.http.routers.link_shortener.tls.certresolver=certbot
     networks:
       - backend
 
