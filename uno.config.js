@@ -1,0 +1,3 @@
+Unocss({
+  autocomplete: true
+})
