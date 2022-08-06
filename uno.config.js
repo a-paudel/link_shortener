@@ -1,3 +1,0 @@
-Unocss({
-  autocomplete: true
-})

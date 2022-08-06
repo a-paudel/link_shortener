@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
-from bottle import run, redirect, get, post, view, request
+from bottle import run, redirect, get, post, view, request, default_app
 from app.database import get_link, create_code
 import os
 
@@ -32,10 +32,4 @@ def create_code_for_url():
     # redirect to code
     return code
 
-
-run(
-    debug=os.getenv("DEBUG", False),
-    reloader=os.getenv("RELOADER", False),
-    host=os.getenv("HOST", "0.0.0.0"),
-    port=os.getenv("PORT", 8080),
-)
+app = default_app()

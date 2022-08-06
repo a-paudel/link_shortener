@@ -75,13 +75,10 @@ import os
 from secrets import token_urlsafe
 import peewee as p
 from playhouse.db_url import connect
-# from dotenv import load_dotenv
-# load_dotenv()
 
 # postgres connection
 db_url = os.getenv("DATABASE_URL")
 
-# db = p.PostgresqlDatabase(db_url)
 db:p.PostgresqlDatabase = connect(db_url)
 
 # create table link, id, url, code
