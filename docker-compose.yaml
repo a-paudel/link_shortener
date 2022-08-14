@@ -24,9 +24,9 @@ services:
       - link_network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.tasks.rule=Host(`link.paudel.me`)"
-      - "traefik.http.routers.tasks.entrypoints=websecure"
-      - "traefik.http.routers.tasks.tls.certresolver=certbot"
+      - "traefik.http.routers.link.rule=Host(`link.paudel.me`)"
+      - "traefik.http.routers.link.entrypoints=websecure"
+      - "traefik.http.routers.link.tls.certresolver=certbot"
 
 networks:
   backend:
