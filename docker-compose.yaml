@@ -1,0 +1,36 @@
+version: '3.0'
+services:
+  db:
+    restart: always
+    image: postgres:alpine
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - internal
+  web:
+    restart: always
+    depends_on:
+      - db
+    build: .
+    env_file:
+      - .env
+    expose:
+      - ${PORT}
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - backend
+      - internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tasks.rule=Host(`link.paudel.me`)"
+      - "traefik.http.routers.tasks.entrypoints=websecure"
+      - "traefik.http.routers.tasks.tls.certresolver=certbot"
+
+networks:
+  backend:
+    external: true
+  internal:
+    driver: bridge
