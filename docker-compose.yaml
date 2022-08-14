@@ -8,7 +8,7 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     networks:
-      - link_network
+      - internal
   web:
     container_name: link
     restart: always
@@ -21,7 +21,7 @@ services:
       - ${PORT}
     networks:
       - backend
-      - link_network
+      - internal
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.link.rule=Host(`link.paudel.me`)"
@@ -31,5 +31,5 @@ services:
 networks:
   backend:
     external: true
-  link_network:
+  internal:
     driver: bridge
