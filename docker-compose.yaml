@@ -10,7 +10,6 @@ services:
     networks:
       - internal
   web:
-    container_name: link
     restart: always
     depends_on:
       - db
