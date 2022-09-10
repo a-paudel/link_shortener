@@ -1,4 +1,3 @@
-from email.policy import default
 import peewee
 from playhouse.db_url import connect
 import os
