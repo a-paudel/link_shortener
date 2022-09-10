@@ -3,7 +3,7 @@ from playhouse.db_url import connect
 import os
 import secrets
 
-db_url = os.environ.get('DATABASE_URL') or 'sqlite:///app.db'
+db_url = os.environ.get('DATABASE_URL') or 'sqlite:///data/app.db'
 db = connect(db_url)
 
 class BaseModel(peewee.Model):
