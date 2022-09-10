@@ -3,9 +3,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+dev = ""
+server = ""
+
 [packages]
 python-dotenv = "*"
-bottle = "*"
+flask = "*"
 peewee = "*"
 psycopg2-binary = "*"
 gunicorn = "*"
