@@ -17,7 +17,7 @@ def show(code):
         return render_template("show.html", link=link)
     return redirect(url_for("home"))
 
-@app.post("/<string:code>")
+@app.get("/<string:code>")
 def redirect_to(code:str):
     link = Link.get_or_none(code=code)
     if link:
