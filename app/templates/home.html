@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="main-container" x-data="data">
+    <h1>Link Shortener</h1>
+    <form x-on:submit.prevent="shorten">
+        <input type="url" placeholder="URL to shorten..." autofocus x-model="url">
+        <label for="check">
+            <input type="checkbox" id="check" x-model="custom">
+            I will choose my own code
+        </label>
+        <input type="text" placeholder="Code..." x-model="code" x-show="custom" x-transition
+            x-bind:class="codeAvailable ? '':'error' " x-on:input.debounce="checkCode">
+        <button type="submit">Shorten</button>
+    </form>
+</div>
+
+<style>
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        gap: 5px;
+    }
+
+    input.error {
+        border: 1px solid red;
+    }
+</style>
+
+<script>
+    let data = {
+        url: '',
+        code: '',
+        custom: false,
+        codeAvailable: false,
+        init() {
+        },
+        async checkCode() {
+            let resp = await axios.post("/api/check", { code: this.code });
+            this.codeAvailable = resp.data.available;
+        },
+        async shorten() {
+            if (this.custom && !this.codeAvailable) {
+                alert('Code not available')
+                return
+            }
+            let resp = await axios.post('/api/shorten', {
+                url: this.url,
+                code: this.custom ? this.code : null
+            })
+            // TODO: redirect to the new shortened URL
+            window.location.href = "/show/" + resp.data.code
+        }
+    }
+</script>
+{% endblock main %}

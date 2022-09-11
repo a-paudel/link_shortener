@@ -1,35 +1,25 @@
-from dotenv import load_dotenv
-load_dotenv()
-from bottle import run, redirect, get, post, view, request, default_app
-from app.database import get_link, create_code
-import os
+from flask import Flask, render_template, redirect, url_for, request
+from app.models import Link
+from app.api import router as api_router
 
 
-@get("/")
-@view("index")
-def index():
-    return dict()
+app = Flask(__name__)
+app.register_blueprint(api_router)
 
+@app.get("/")
+def home():
+    return render_template("home.html")
 
-# get route
-@get("/<code>")
-def redirect_to_link(code):
-    # get link from code
-    link = get_link(code)
-    # if link exists, redirect to link
+@app.get("/show/<string:code>")
+def show(code):
+    link = Link.get_or_none(code=code)
     if link:
-        return redirect(link, 301)
-    # if link doesn't exist, return 404
-    return "404"
+        return render_template("show.html", link=link)
+    return redirect(url_for("home"))
 
-
-# create code for url
-@post("/")
-def create_code_for_url():
-    # create code for url
-    url = request.json.get("url")
-    code = create_code(url)
-    # redirect to code
-    return code
-
-app = default_app()
+@app.post("/<string:code>")
+def redirect_to(code:str):
+    link = Link.get_or_none(code=code)
+    if link:
+        return redirect(link.url, 301)
+    return redirect(url_for("home"))
