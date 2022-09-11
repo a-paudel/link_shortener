@@ -9,7 +9,7 @@ db = connect(db_url)
 class BaseModel(peewee.Model):
     class Meta:
         database = db
-        schema = "link_shortener" if "postgres" in db_url else None
+        # schema = "link_shortener" if "postgres" in db_url else None
 
 class Link(BaseModel):
     @staticmethod
