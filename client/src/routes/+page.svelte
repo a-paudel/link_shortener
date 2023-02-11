@@ -6,10 +6,6 @@
   let url = "";
   $: urlValid = validateUrl(url);
 
-  $: {
-    console.log(urlValid, url);
-  }
-
   function validateUrl(data: string) {
     // no http
     let regex1 =
@@ -35,7 +31,7 @@
   <!-- svelte-ignore a11y-autofocus -->
   <input
     type="text"
-    placeholder="Enter URL"
+    placeholder="Shorten URL"
     autofocus
     class="p2 w-screen text-center text-6xl font-bold border-0 focus:outline-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     bind:value={url}

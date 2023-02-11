@@ -28,7 +28,7 @@
         iconColor: "black",
       });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 </script>
@@ -37,11 +37,11 @@
   <a href="/" class="fixed top-1 left-1">Another</a>
 
   <div class="h-screen flex flex-col items-center justify-center gap4">
-    <h1 class="md:text-6xl text-center">Link Shortened</h1>
+    <!-- <h1 class="md:text-6xl text-center">Link Shortened</h1> -->
 
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <code
-      class="p2 rounded-sm bg-gray-2 text-xl cursor-copy select-all"
+      class="p2 rounded-sm bg-gray-2 lg:text-4xl md:text-2xl sm:text-xl text-lg cursor-copy select-all"
       on:click={copyHandler}
     >
       {shortLink}

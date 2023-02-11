@@ -5,10 +5,12 @@ import (
 	"link_shortener/models"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func RegisterLinkRoutes(app *echo.Echo) {
 	var router = app.Group("/api/links")
+	router.Use(middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(2)))
 
 	router.POST("", createCode)
 	router.GET("/:id", getUrl)
