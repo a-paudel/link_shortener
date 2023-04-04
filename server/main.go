@@ -1,12 +1,12 @@
 package main
 
 import (
-	"link_shortener/models"
-	"link_shortener/routes"
 	"net/http"
 
 	"embed"
 
+	"github.com/a-paudel/link_shortener/models"
+	"github.com/a-paudel/link_shortener/routes"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )

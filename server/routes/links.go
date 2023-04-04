@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"io/ioutil"
-	"link_shortener/models"
+	"io"
 
+	"github.com/a-paudel/link_shortener/models"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -17,7 +17,7 @@ func RegisterLinkRoutes(app *echo.Echo) {
 }
 
 func createCode(c echo.Context) error {
-	var bodyBytes, err = ioutil.ReadAll(c.Request().Body)
+	var bodyBytes, err = io.ReadAll(c.Request().Body)
 	if err != nil {
 		return c.String(400, "Invalid URL")
 	}

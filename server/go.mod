@@ -1,4 +1,4 @@
-module link_shortener
+module github.com/a-paudel/link_shortener
 
 go 1.20
 
