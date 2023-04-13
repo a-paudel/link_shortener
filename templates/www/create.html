@@ -1,0 +1,60 @@
+{{block "content" .}}
+<form method="post">
+    <h1>Link Shortener</h1>
+    <input type="url" name="url" placeholder="URL" autofocus>
+</form>
+
+{{range .errors}}
+<p class="error">{{.}}</p>
+{{end}}
+
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        gap: 1rem;
+        margin: 0;
+    }
+
+    input {
+        text-align: center;
+    }
+
+    h1,
+    h2 {
+        margin: 0;
+    }
+
+    .error {
+        display: none;
+    }
+</style>
+
+<script>
+    async function showErrors() {
+        // clear query params
+        window.history.replaceState({}, document.title, "/");
+        let errors = document.querySelectorAll(".error");
+        for (const error of errors) {
+            let message = error.textContent;
+            message =
+                await Swal.fire({
+                    // title: 'Error!',
+                    title: message,
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    potition: "top",
+                });
+        }
+        // focus back to input
+        document.querySelector("input").focus();
+    }
+    showErrors();
+</script>
+{{end}}

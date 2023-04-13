@@ -3,8 +3,9 @@ services:
   app:
     container_name: link_shortener
     restart: unless-stopped
-    image: ubuntu:22.04
-    command: bash -c "cd /app && ./link_shortener"
+    # image: ubuntu:22.04
+    build: .
+    command: bash -c "cd /app && chmod +x link_shortener && ./link_shortener"
     volumes:
       - ./data:/app/data
       - ./link_shortener:/app/link_shortener
@@ -16,6 +17,8 @@ services:
 
     expose:
       - 8000
+    ports:
+      - 8000:8000
     networks:
       - proxy
 
