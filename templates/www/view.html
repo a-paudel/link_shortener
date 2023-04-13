@@ -1,0 +1,49 @@
+{{block "content" .}}
+<a href="/" id="another">Another</a>
+
+<div class="flex">
+    <article>
+        <h2 id="url">{{.short}}</h2>
+        <footer>
+            {{.link.Url}}
+            <a id="button" href="{{.link.Url}}" role="button">Go</a>
+        </footer>
+    </article>
+</div>
+
+<style>
+    h1,
+    h2 {
+        margin: 0;
+    }
+
+    .flex {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    a#button {
+        margin-top: 1rem;
+        display: block;
+    }
+
+    a#another {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    }
+
+    #url {
+        user-select: all;
+    }
+</style>
+
+<script>
+
+</script>
+{{end}}
