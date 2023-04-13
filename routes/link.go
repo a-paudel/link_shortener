@@ -1,8 +1,7 @@
 package routes
 
 import (
-	"link_shortener/models"
-
+	"github.com/a-paudel/link_shortener/models"
 	"github.com/labstack/echo/v4"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"

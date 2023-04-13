@@ -4,10 +4,10 @@ import (
 	"html/template"
 	"io"
 	"io/fs"
-	"link_shortener/routes"
-	"link_shortener/templates"
 	"strings"
 
+	"github.com/a-paudel/link_shortener/routes"
+	"github.com/a-paudel/link_shortener/templates"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
